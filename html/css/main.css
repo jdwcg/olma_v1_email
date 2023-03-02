@@ -503,3 +503,68 @@
 .modalClose {
   cursor: pointer;
 }
+
+.write_input_wrap {
+  margin: 2rem 0;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.write_input_wrap .write_input {
+  display: flex;
+  align-items: center;
+}
+.write_input_wrap .write_input label {
+  word-break: keep-all;
+  width: 90px;
+}
+.write_input_wrap .write_input input,
+.write_input_wrap .write_input textarea {
+  width: 100%;
+  border: 1px solid #c1cad1;
+  height: 40px;
+  border-radius: 3px;
+  padding: 10px;
+}
+.write_input_wrap .write_input textarea {
+  height: 100px;
+}
+.write_input_wrap .write_input textarea:focus {
+  outline: none;
+}
+
+.mail_preview {
+  border-bottom: 1px solid #eee;
+  padding: 1rem;
+}
+.mail_preview h1 {
+  font-size: 18px;
+}
+.mail_preview dl {
+  display: flex;
+}
+.mail_preview dl dt {
+  font-weight: 700;
+}
+.mail_preview dl dd {
+  margin: 0;
+}
+
+.txt_content {
+  margin: 1rem;
+  line-height: 1.5;
+}
+
+.attfile_area {
+  background-color: #eee;
+  padding: 0.5rem 2rem;
+}
+.attfile_area dl {
+  display: flex;
+}
+.attfile_area dl dt {
+  font-weight: 700;
+}
+.attfile_area dl dd {
+  margin: 0;
+}

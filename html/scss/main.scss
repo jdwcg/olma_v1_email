@@ -316,10 +316,6 @@ $bo_line: #c1cad1;
    .sort_list_2.on {
       display: flex;
       z-index: 1;
-      // @media (max-width: 480px) {
-      //    left: 50%;
-      //    transform: translateX(-50%);
-      // }
    }
 }
 
@@ -353,7 +349,6 @@ $bo_line: #c1cad1;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      // height: 100px;
    }
 }
 
@@ -499,4 +494,63 @@ $main: #3d435d;
 
 .modalClose {
    cursor: pointer;
+}
+
+// 메일쓰기
+.write_input_wrap {
+   margin: 2rem 0;
+   display: flex;
+   gap: 10px;
+   flex-direction: column;
+   .write_input {
+      display: flex;
+      align-items: center;
+      label {
+         word-break: keep-all;
+         width: 90px;
+      }
+      input,
+      textarea {
+         width: 100%;
+         border: 1px solid $bo_line;
+         height: 40px;
+         border-radius: 3px;
+         padding: 10px;
+      }
+      textarea {
+         height: 100px;
+         &:focus {
+            outline: none;
+         }
+      }
+   }
+}
+
+@mixin dd_mod {
+   dl {
+      display: flex;
+      dt {
+         font-weight: 700;
+      }
+      dd {
+         margin: 0;
+      }
+   }
+}
+.mail_preview {
+   border-bottom: 1px solid #eee;
+   padding: 1rem;
+   h1 {
+      font-size: 18px;
+   }
+   @include dd_mod;
+}
+.txt_content {
+   margin: 1rem;
+   line-height: 1.5;
+}
+.attfile_area {
+   background-color: #eee;
+   padding: 0.5rem 2rem;
+   @include dd_mod;
 }

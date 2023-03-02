@@ -10,13 +10,13 @@
             <a href="" class="setting"><img src="esign-img/icon_setting.svg"> <span>설정</span></a>
             <a href="" class="logout"><img src="esign-img/icon_logout.svg"> <span>로그아웃</span></a>
         </div>
-        <div class="write_btn"><a href=""><img src="esign-img/icon_document.svg"> <span>작성하기</span></a></div>
+        <div class="write_btn"><a href="mail_write.php"><img src="esign-img/icon_document.svg"> <span>작성하기</span></a></div>
         <div class="m_scroll">
             <ul class="nav_list">
                
                 <li class="icon12"><a ><span>스마트 편지함</span></a></li>
-                <li class="iconChild p_hide"><a href="" ><span class="material-icons" style="padding-left: 0;">remove</span> <span style="padding-left: 0;">편지함</span></a></li>
-                <li class="iconChild p_hide"><a href="" ><span class="material-icons" style="padding-left: 0;">remove</span> <span style="padding-left: 0;">편지함</span></a></li>
+                <li class="iconChild p_hide"><a href="mail_read_smart.php" ><span class="material-icons" style="padding-left: 0;">remove</span> <span style="padding-left: 0;">편지함</span></a></li>
+                <li class="iconChild p_hide"><a href="mail_read_smart.php" ><span class="material-icons" style="padding-left: 0;">remove</span> <span style="padding-left: 0;">편지함</span></a></li>
                 <!-- 글자색#434d6d 배경색은 #babcc6 #ffffff-->
                 <li class=""><a href="mail_sent_box.php"><span>보낸 편지함</span></a></li>
                 <li class=""><a href="mail_tosend_box.php"><span>보낼 편지함</span></a></li>
