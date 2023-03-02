@@ -526,6 +526,12 @@
   border-radius: 3px;
   padding: 10px;
 }
+@media (max-width: 480px) {
+  .write_input_wrap .write_input input,
+  .write_input_wrap .write_input textarea {
+    height: 30px;
+  }
+}
 .write_input_wrap .write_input textarea {
   height: 100px;
 }

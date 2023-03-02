@@ -514,6 +514,9 @@ $main: #3d435d;
          width: 100%;
          border: 1px solid $bo_line;
          height: 40px;
+         @media (max-width: 480px) {
+            height: 30px;
+         }
          border-radius: 3px;
          padding: 10px;
       }
