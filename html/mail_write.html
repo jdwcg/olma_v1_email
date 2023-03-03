@@ -1,4 +1,5 @@
 <body>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
    <link rel="stylesheet" href="./esign-css/style.css" />
    <link rel="stylesheet" href="./css/main.css" />
    <!-- 페이지 시작 -->
@@ -31,20 +32,73 @@
                      <p class="sort_btn">저장하기</p>
                      <div class="sort_btn_wrap sortPopWrap_1">
                         <p class="sort_btn">옵션<img src="./esign-img-email/arrow_down.svg" alt="svg" /></p>
-                        <ul class="sort_list_1 sortList_1">
-                           <li>스마트 편지함</li>
-                           <li>보낸 편지함</li>
-                           <li>보낼 편지함</li>
-                           <li>임시 보관함</li>
-                           <li>휴지통</li>
-                           <li class="new_mail">
-                              <input type="text" placeholder="새 편지함" />
-                              <button>추가</button>
+                        <ul class="sort_list_1 sortList_1 write_options">
+                           <li class="wrt_opt">
+                              <div class="">
+                                 <label for="reservation" id="send_opt_tit">
+                                    발송예약
+                                    <input id="reservation" type="checkbox" />
+                                 </label>
+                              </div>
+                              <div class="date_time">
+                                 <input type="date" id="currentDate" />
+                                 <input type="time" id="currentTime" />
+                              </div>
+                              <script>
+                                 document.getElementById("currentDate").value = new Date().toISOString().substring(0, 10)
+                                 document.getElementById("currentTime").value = new Date().toISOString().slice(11, 16)
+                              </script>
                            </li>
-                           <li class="chk_wrap">
-                              <input id="chk" type="checkbox" name="" id="" />
-                              <label for="chk">계속 이동</label>
+                           <li class="wrt_opt selbox_wrap">
+                              <label id="send_opt_tit">서명</label>
+                              <select name="sign" id="sign">
+                                 <option value="서명사용안함">서명사용안함</option>
+                              </select>
                            </li>
+                           <li class="wrt_opt">
+                              <span id="send_opt_tit">보내기 옵션</span>
+                              <div class="send_opts">
+                                 <p class="send_opt">
+                                    <input id="psn" type="checkbox" />
+                                    <label for="psn">개인별 보내기</label>
+                                 </p>
+                                 <p class="send_opt">
+                                    <input id="impo" type="checkbox" />
+                                    <label for="impo">중요</label>
+                                 </p>
+                                 <p class="send_opt">
+                                    <input id="sentsave" type="checkbox" />
+                                    <label for="sentsave">보낸 편지 저장</label>
+                                 </p>
+                                 <p class="send_opt">
+                                    <input id="resconfirm" type="checkbox" />
+                                    <label for="resconfirm">수신 확인</label>
+                                 </p>
+                              </div>
+                           </li>
+                           <li class="wrt_opt">
+                              <span id="send_opt_tit">쓰기 옵션</span>
+                              <div class="send_opts">
+                                 <p class="send_opt">
+                                    <input id="reg_mod" type="checkbox" />
+                                    <label for="reg_mod">일반 텍스트 모드</label>
+                                 </p>
+                              </div>
+                           </li>
+                           <li class="wrt_opt">
+                              <span id="send_opt_tit">인코딩</span>
+                              <div class="send_opts">
+                                 <p class="send_opt">
+                                    <input id="utf8" type="radio" name="chk" checked />
+                                    <label for="utf8">UTF-8</label>
+                                 </p>
+                                 <p class="send_opt">
+                                    <input id="euckr" type="radio" name="chk" />
+                                    <label for="euckr">EUC-KR</label>
+                                 </p>
+                              </div>
+                           </li>
+                           <button class="opt_submit">확인</button>
                         </ul>
                      </div>
                   </section>

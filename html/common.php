@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="esign-css/style.css?<?=rand()?>">
     <title>얼마에요 전자계약</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     <link rel="stylesheet" href="./esign-css/style.css>" />
     <link rel="stylesheet" href="./css/main.css" />
       

@@ -44,6 +44,20 @@ $hr: #e7e7e7;
       @media (max-width: 480px) {
          @include main_px_mo;
       }
+      > ul {
+         > li {
+            margin-left: 14px;
+            margin-top: 6px;
+            &::before {
+               content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+               color: gray; /* Change the color */
+               font-weight: bold; /* If you want it to be bold */
+               display: inline-block; /* Needed to add space between the bullet and the text */
+               width: 1em; /* Also needed for space (tweak if needed) */
+               margin-left: -1em; /* Also needed for space (tweak if needed) */
+            }
+         }
+      }
    }
    .mail_content_read {
       @include main_px;
@@ -163,6 +177,39 @@ $bo_line: #c1cad1;
             }
          }
       }
+      // 메일관리함
+      .email_adm {
+         display: grid;
+         grid-template-columns: 1fr 0.2fr 0.2fr 0.1fr 0.1fr 0.1fr 0.2fr 0.1fr 0.1fr;
+         justify-content: flex-end;
+         align-items: flex-end;
+         &:first-child {
+            border-top: 2px solid #464646;
+         }
+
+         td {
+            display: flex;
+            justify-content: flex-start;
+         }
+         @media (max-width: 480px) {
+            &:first-child {
+               display: none;
+            }
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-content: normal;
+            align-items: flex-start;
+            td {
+               height: 32px;
+               text-align: left;
+            }
+            .empty {
+               display: none;
+            }
+         }
+      }
    }
 }
 @mixin xy_c {
@@ -217,6 +264,20 @@ $bo_line: #c1cad1;
    border-radius: 3px;
    box-shadow: 0 4px 14px rgba($color: #000000, $alpha: 0.1);
    transition: all 0.1s ease-out;
+   @media (max-width: 480px) {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      &::after {
+         content: "";
+         left: 0;
+         right: 0;
+         top: 0;
+         bottom: 0;
+         box-shadow: 0 0 9999px rgba($color: #000000, $alpha: 0.1);
+      }
+   }
 }
 
 .sort_pop {
@@ -297,7 +358,6 @@ $bo_line: #c1cad1;
          &:hover {
             cursor: pointer;
             transition: all 0.3s ease-in;
-            color: $bo_line;
          }
       }
    }
@@ -308,7 +368,6 @@ $bo_line: #c1cad1;
          &:hover {
             cursor: pointer;
             transition: all 0.3s ease-in;
-            color: $bo_line;
          }
       }
    }
@@ -415,7 +474,8 @@ $bo_line: #c1cad1;
 
 // 모달
 $main: #3d435d;
-.mail_modal {
+
+@mixin mailModal($align, $line) {
    position: fixed;
    background-color: rgba($color: #000000, $alpha: 0.1);
    left: 0;
@@ -425,6 +485,8 @@ $main: #3d435d;
    opacity: 0;
    z-index: -1;
    transition: all 0.3s ease;
+   text-align: $align;
+
    .mail_modal_wrap {
       position: fixed;
       left: 50%;
@@ -453,13 +515,31 @@ $main: #3d435d;
          }
       }
       .madal_body {
-         border: 1px solid #eee;
+         border: $line;
          margin: 1rem;
          max-height: 500px;
          overflow-y: auto;
+         display: flex;
+         flex-direction: column;
+         // align-items: center;
          p {
             padding: 1rem;
             font-size: 14px;
+         }
+         // 메일발송/재발송 2곳
+         .resend_radios {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 1rem auto;
+            .resend_radio {
+               text-align: left;
+               padding: 8px 0;
+            }
+         }
+         .resend_caution {
+            color: #999;
+            line-height: 1.5;
          }
       }
       .modal_btns {
@@ -483,6 +563,13 @@ $main: #3d435d;
       }
    }
 }
+
+.mail_modal {
+   @include mailModal(left, 1px solid #eee);
+}
+.mail_modal_mod {
+   @include mailModal(center, none);
+}
 .mail_modal.on {
    opacity: 1;
    z-index: 1;
@@ -491,7 +578,14 @@ $main: #3d435d;
    opacity: 0;
    z-index: -1;
 }
-
+.mail_modal_mod.on {
+   opacity: 1;
+   z-index: 1;
+}
+.mail_modal_mod.on.off {
+   opacity: 0;
+   z-index: -1;
+}
 .modalClose {
    cursor: pointer;
 }
@@ -509,18 +603,21 @@ $main: #3d435d;
          word-break: keep-all;
          width: 90px;
       }
-      input,
-      textarea {
+      @mixin commonVal {
          width: 100%;
          border: 1px solid $bo_line;
-         height: 40px;
-         @media (max-width: 480px) {
-            height: 30px;
-         }
+      }
+      input {
+         @include commonVal;
+         height: 30px;
          border-radius: 3px;
-         padding: 10px;
+         // padding: 10px;
+         @media (max-width: 480px) {
+            height: 24px;
+         }
       }
       textarea {
+         @include commonVal;
          height: 100px;
          &:focus {
             outline: none;
@@ -543,6 +640,7 @@ $main: #3d435d;
 .mail_preview {
    border-bottom: 1px solid #eee;
    padding: 1rem;
+   margin: 0 auto;
    h1 {
       font-size: 18px;
    }
@@ -556,4 +654,149 @@ $main: #3d435d;
    background-color: #eee;
    padding: 0.5rem 2rem;
    @include dd_mod;
+}
+
+// 레이어팝업
+@mixin defaultSet {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   align-items: flex-start;
+}
+.write_options {
+   width: 260px;
+   input[type="checkbox"] {
+      margin-right: 4px !important;
+   }
+   .wrt_opt {
+      @include defaultSet;
+      > label {
+         @include defaultSet;
+      }
+      #send_opt_tit {
+         display: block;
+         display: flex;
+         align-items: center;
+         margin: 12px 0 8px;
+         font-weight: 600;
+      }
+      .send_opts {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         gap: 4px;
+         .send_opt {
+            @include defaultSet;
+            flex-direction: row;
+            align-items: center;
+            min-width: 150px;
+         }
+      }
+   }
+}
+
+@mixin commonSet {
+   padding-left: 6px;
+   height: 30px;
+   width: 100%;
+   border: 1px solid $bo_line;
+   border-radius: 4px;
+}
+.date_time {
+   @include defaultSet;
+   flex-direction: row;
+   width: 100%;
+   gap: 10px;
+   input {
+      @include commonSet;
+   }
+}
+.selbox_wrap {
+   width: 100%;
+   position: relative;
+   > select {
+      @include commonSet;
+   }
+   &::after {
+      font-family: "Material Icons";
+      content: "\e313";
+      position: absolute;
+      bottom: 8px;
+      right: 0;
+      padding-right: 10px;
+   }
+}
+.opt_submit {
+   background-color: transparent;
+   border: none;
+   margin: 16px 0 0;
+   font-weight: 700;
+   color: $red;
+   cursor: pointer;
+}
+
+// 휴지통
+.trash_coment {
+   display: flex;
+   align-items: center;
+   padding: 1rem;
+   color: #da1300;
+   background-color: #ffe7e7;
+   margin-bottom: 2rem;
+}
+
+@mixin usage_mail_comm {
+   display: flex;
+   align-items: center;
+   gap: 14px;
+}
+.usage_mail {
+   margin: 2rem auto 1.5rem;
+   @include usage_mail_comm;
+   justify-content: space-between;
+   word-break: keep-all;
+   @media (max-width: 480px) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+   }
+   .usage_current {
+      @include usage_mail_comm;
+      .usage_wrap {
+         @include usage_mail_comm;
+      }
+      .usage_wrap {
+         .chart_wrap {
+            .teamCart_outer {
+               .usage {
+                  height: 10px;
+                  border: 1px solid #ddd;
+                  svg {
+                     width: 100%;
+                     rect {
+                        border-radius: 5px;
+                        transition: all 0.5s ease-in;
+                     }
+                  }
+               }
+            }
+         }
+      }
+      .mail_clear {
+         color: $red;
+      }
+   }
+   .new_mailbox {
+      input {
+         border: 1px solid $bo_line;
+         height: 30px;
+         padding-left: 6px;
+      }
+      .mail_clear {
+         color: $red;
+      }
+   }
+}
+
+.modalBtn {
+   cursor: pointer;
 }

@@ -27,11 +27,7 @@
                   </section>
                   <section class="sort_pop_wrap_mod.on sortPopWrapMod smart_mail_btns">
                      <div class="sort_btn_wrap sortPopWrap_2">
-                        <p class="sort_btn">보내기<img src="./esign-img-email/arrow_down.svg" alt="svg" /></p>
-                        <ul class="sort_list_2 sortList_2">
-                           <li>보내기</li>
-                           <li>보안 편지 보내기</li>
-                        </ul>
+                        <p class="sort_btn modalBtnMod">보내기</p>
                      </div>
                      <p class="sort_btn modalBtn">미리보기</p>
                      <p class="sort_btn">저장하기</p>
@@ -177,6 +173,34 @@
       </div>
    </section>
    <!-- 모달창 끝 -->
+
+   <!-- 모달창보내기 시작 -->
+   <section class="mail_modal_mod">
+      <div class="mail_modal_wrap mail_modal_wrap_mod">
+         <div class="modal_hd">
+            메일 발송
+            <img src="./esign-img-email/icon_delete.svg" alt="icon_delete.svg" class="modalCloseMod" />
+         </div>
+         <div class="madal_body">
+            <section class="resend_radios">
+               <p>편지 발송 후 임시보관함 메일을</p>
+               <p class="resend_radio">
+                  <input type="radio" name="chk" id="chk1" checked />
+                  <label for="chk1">삭제하지 않습니다.</label>
+               </p>
+               <p class="resend_radio">
+                  <input type="radio" name="chk" id="chk2" />
+                  <label for="chk2">삭제합니다.(복구 불가)</label>
+               </p>
+            </section>
+         </div>
+         <div class="modal_btns">
+            <button class="btn">취소</button>
+            <button class="btn">확인</button>
+         </div>
+      </div>
+   </section>
+   <!-- 모달창보내기 끝 -->
    <script>
       // 버블링 팝업
       let sortList = document.querySelector(".sortList")
@@ -234,10 +258,18 @@
          })
       }
       // 비블링 모달창
+
       let modalBtn = document.querySelector(".modalBtn")
+      let modalBtnMod = document.querySelector(".modalBtnMod")
+
       let mailModal = document.querySelector(".mail_modal")
+      let mailModalMod = document.querySelector(".mail_modal_mod")
+
       let modalClose = document.querySelector(".modalClose")
+      let modalCloseMod = document.querySelector(".modalCloseMod")
+
       let mailModalWrap = document.querySelector(".mail_modal_wrap")
+      let mailModalWrapMod = document.querySelector(".mail_modal_wrap_mod")
 
       function modalPop(elem) {
          if (elem == "on") {
@@ -257,6 +289,28 @@
          modalPop("off")
       }
       mailModalWrap.onclick = function (event) {
+         event.stopPropagation()
+      }
+
+      // 보내기모달
+      function modalPopMod(elem) {
+         if (elem == "on") {
+            mailModalMod.classList.add(elem)
+            mailModalMod.classList.remove("off")
+         } else if (elem == "off") {
+            mailModalMod.classList.add(elem)
+         }
+      }
+      modalBtnMod.onclick = function () {
+         modalPopMod("on")
+      }
+      modalCloseMod.onclick = function () {
+         modalPopMod("off")
+      }
+      mailModalMod.onclick = function () {
+         modalPopMod("off")
+      }
+      mailModalWrapMod.onclick = function (event) {
          event.stopPropagation()
       }
    </script>
