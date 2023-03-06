@@ -167,13 +167,57 @@
    <section class="mail_modal">
       <div class="mail_modal_wrap">
          <div class="modal_hd">
-            원문보기
+            메일정리하기
             <img src="./esign-img-email/icon_delete.svg" alt="icon_delete.svg" class="modalClose" />
          </div>
-         <div class="madal_body">
-            <p>
-               업무에 노고가 많습니다. Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, qui saepe! Minus vero iste esse modi illum itaque in dolor,
-            </p>
+         <div class="madal_body" style="border: none">
+            <div class="mail_clear_pop">
+               <section class="label_tit">
+                  <span class="label_tit_span">정리할 메일함</span>
+                  <div class="input_wrap">
+                     <select name="mailbox" id="mailbox">
+                        <option value="받은 편지함">받은 편지함</option>
+                        <option value="받은 편지함">받은 편지함</option>
+                     </select>
+                  </div>
+               </section>
+               <section class="label_tit">
+                  <span class="label_tit_span">기간 선택</span>
+                  <div class="input_wrap">
+                     <input type="date" name="date" id="date" />
+                     <span>~</span>
+                     <input type="date" name="date" id="date" />
+                  </div>
+               </section>
+               <section class="label_tit_mod">
+                  <span class="label_tit_span">정리 방법</span>
+                  <div class="input_wrap">
+                     <p>
+                        <input type="radio" name="move" id="move" />
+                        <label for="move">휴지통으로 이동</label>
+                     </p>
+                     <p>
+                        <input type="radio" name="move" id="move_mod" />
+                        <span>
+                           <select name="move" id="mailbox">
+                              <option value="받은 편지함">받은 편지함</option>
+                              <option value="받은 편지함">받은 편지함</option>
+                           </select>
+                        </span>
+                        <label for="move_mod"> 으로 이동 </label>
+                     </p>
+                  </div>
+               </section>
+               <section class="label_tit">
+                  <span class="label_tit_span">옵션</span>
+                  <div class="input_wrap">
+                     <input type="checkbox" name="chk1" id="chk1" />
+                     <label for="chk1">보낸 편지 저장</label>
+                     <input type="checkbox" name="chk2" id="chk2" />
+                     <label for="chk2">수신 확인</label>
+                  </div>
+               </section>
+            </div>
          </div>
          <div class="modal_btns">
             <button class="btn">취소</button>

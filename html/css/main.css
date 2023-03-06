@@ -114,14 +114,13 @@
 }
 @media (max-width: 480px) {
   .mailbox_bo tbody > tr > td {
-    height: 18px !important;
     padding-top: 6px;
   }
   .mailbox_bo tbody > tr > td:not(:last-child) {
     padding-right: 14px;
   }
   .mailbox_bo tbody > tr > td:first-child {
-    font-weight: 600;
+    font-weight: 500;
   }
 }
 .mailbox_bo tbody > tr > td svg {
@@ -256,6 +255,9 @@
 
 .sort_pop {
   position: relative;
+}
+.sort_pop > svg {
+  transform: scale(120%);
 }
 .sort_pop .chk_n_bm {
   display: flex;

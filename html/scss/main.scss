@@ -105,14 +105,13 @@ $bo_line: #c1cad1;
          }
          > td {
             @media (max-width: 480px) {
-               height: 18px !important;
                padding-top: 6px;
 
                &:not(:last-child) {
                   padding-right: 14px;
                }
                &:first-child {
-                  font-weight: 600;
+                  font-weight: 500;
                }
             }
             svg {
@@ -290,6 +289,9 @@ $bo_line: #c1cad1;
 
 .sort_pop {
    position: relative;
+   > svg {
+      transform: scale(120%);
+   }
    .chk_n_bm {
       display: flex;
       align-items: center;
