@@ -81,7 +81,6 @@
 }
 @media (max-width: 480px) {
   .mailbox_bo tbody #popmenu {
-    height: inherit;
     padding: 10px 0;
   }
 }
@@ -94,9 +93,8 @@
 @media (max-width: 480px) {
   .mailbox_bo tbody > tr {
     flex-direction: column;
-    gap: inherit;
-    gap: 4px;
-    height: inherit;
+    gap: 0;
+    padding: 12px 0;
   }
 }
 .mailbox_bo tbody > tr:first-child {
@@ -113,6 +111,18 @@
   height: 50px;
   display: flex;
   align-items: center;
+}
+@media (max-width: 480px) {
+  .mailbox_bo tbody > tr > td {
+    height: 18px !important;
+    padding-top: 6px;
+  }
+  .mailbox_bo tbody > tr > td:not(:last-child) {
+    padding-right: 14px;
+  }
+  .mailbox_bo tbody > tr > td:first-child {
+    font-weight: 600;
+  }
 }
 .mailbox_bo tbody > tr > td svg {
   cursor: pointer;
@@ -273,9 +283,8 @@
 @media (max-width: 480px) {
   .sort_pop .sort_pop_wrap .sort_list {
     position: fixed;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
   }
   .sort_pop .sort_pop_wrap .sort_list::after {
     content: "";
@@ -365,9 +374,8 @@
 @media (max-width: 480px) {
   .sort_btn_wrap > .sort_list_1 {
     position: fixed;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
   }
   .sort_btn_wrap > .sort_list_1::after {
     content: "";
@@ -402,9 +410,8 @@
 @media (max-width: 480px) {
   .sort_btn_wrap > .sort_list_2 {
     position: fixed;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
   }
   .sort_btn_wrap > .sort_list_2::after {
     content: "";
@@ -927,4 +934,112 @@
 
 .modalBtn {
   cursor: pointer;
+}
+
+.mail_clear_pop {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+.mail_clear_pop .label_tit {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+@media (max-width: 430px) {
+  .mail_clear_pop .label_tit {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+.mail_clear_pop .label_tit:first-child {
+  position: relative;
+}
+.mail_clear_pop .label_tit:first-child .input_wrap::after {
+  font-family: "Material Icons";
+  content: "\e313";
+  position: absolute;
+  bottom: 8px;
+  right: 6px;
+  pointer-events: none;
+}
+.mail_clear_pop .label_tit .input_wrap {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+.mail_clear_pop .label_tit .input_wrap select,
+.mail_clear_pop .label_tit .input_wrap input[type=date] {
+  border: 1px solid #c1cad1;
+  width: 100%;
+  height: 30px;
+  padding-left: 10px;
+}
+.mail_clear_pop .label_tit .label_tit_span {
+  min-width: 84px;
+  padding: 10px 0;
+}
+@media (max-width: 430px) {
+  .mail_clear_pop .label_tit .label_tit_span {
+    padding: 0;
+  }
+}
+.mail_clear_pop > .label_tit_mod {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+@media (max-width: 430px) {
+  .mail_clear_pop > .label_tit_mod {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+.mail_clear_pop > .label_tit_mod .input_wrap {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.mail_clear_pop > .label_tit_mod .input_wrap > p {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+.mail_clear_pop > .label_tit_mod .input_wrap > p:last-child span {
+  position: relative;
+}
+.mail_clear_pop > .label_tit_mod .input_wrap > p:last-child span::after {
+  font-family: "Material Icons";
+  content: "\e313";
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  pointer-events: none;
+}
+.mail_clear_pop > .label_tit_mod .input_wrap > p:last-child select {
+  border: 1px solid #c1cad1;
+  height: 30px;
+  padding: 0 2rem 0 4px;
+}
+.mail_clear_pop > .label_tit_mod .label_tit_span {
+  min-width: 84px;
+  padding: 10px 0;
+}
+@media (max-width: 430px) {
+  .mail_clear_pop > .label_tit_mod .label_tit_span {
+    padding: 0;
+  }
 }
